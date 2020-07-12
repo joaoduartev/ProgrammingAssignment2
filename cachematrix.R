@@ -8,13 +8,18 @@
 
 makeCacheMatrix <- function(matriz){
     answer <- c()
+    set <- function(value) {
+        matriz <<- value
+        answer <<- NULL
+    }
     datas <- function() matriz
     inverse <- function() answer
     calc_inverse <- function(solve) answer <<- solve
-    list(datas = datas, calc_inverse = calc_inverse, inverse = inverse)
+    list(set = set, datas = datas, calc_inverse = calc_inverse, inverse = inverse)
 }
 
 # This function is the one which actually calculates the inverse matrix
+# it calls the functions listed in the function makeCacheMatrix
 # inverse() calls the variable that will store the matrix resulted from solve() function
 # calc_inverse() calls solve() and applies it to the original matrix (argument of the function)
 
